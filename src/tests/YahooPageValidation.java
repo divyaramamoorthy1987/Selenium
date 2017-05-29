@@ -15,6 +15,8 @@ public class YahooPageValidation {
 	public void OpenBrowser() {
 		driver = new FirefoxDriver();
 		driver.manage().window().maximize();
+		driver.get("https://yahoo.com/");
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 	}
 
 
@@ -26,17 +28,15 @@ public class YahooPageValidation {
 	@Test 
 	public void verifyYahooPageTitle() {
 		System.out.println("Inside verifyYahooPageTitle");
-		driver.get("https://yahoo.com/");
-		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		String title = driver.getTitle();
 		System.out.println("Title is : "+title);
-		Assert.assertTrue(title.contains("Yahoo"));
+		Assert.assertTrue(title.contains("Yahoo"), "Yahoo page title doesn't contain yahoo");
 	 }
 
 	@Test
 	public void verifyYahooLogo() throws InterruptedException{
 		System.out.println("Inside verifyYahooLogo");
-		WebElement yahooLogo = driver.findElement(By.id(CommonLibrary.getPath("YahooHomePage","HomePage","logo"));
+		WebElement yahooLogo = driver.findElement(By.xpath(CommonLibrary.getPath("YahooHomePage","HomePage","logo"));
 		Assert.assertTrue(yahooLogo.isDisplayed(), "Yahoo Logo is not present");
 	}
 
@@ -44,13 +44,13 @@ public class YahooPageValidation {
 	 public void verifySearchBar() throws InterruptedException{
 		 System.out.println("Inside verifySearchBar");
 		 String  Query = "iPhone";
-		 System.out.println("Inside verifyYahooLogo");
-		 WebElement searchBox = driver.findElement(By.id(CommonLibrary.getPath("YahooHomePage", "HomePageSearchBar","searchbar"));
+		 WebElement searchBox = driver.findElement(By.xpath(CommonLibrary.getPath("YahooHomePage", "HomePageSearchBar","searchbar"));
 		 Assert.assertTrue(searchBox.isDisplayed(), "Search bar is not display");
 		 searchBox.sendKeys(Query);
 		 searchBox.submit();
+		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		 String searchResultsLandingPage = driver.getCurrentUrl();
-		 String searchLandingPageURL = "https://in.search.yahoo.com/search?p=dvd";
+		 String searchLandingPageURL = "https://search.yahoo.com/search?p=iphone";
 		 Assert.assertTrue(searchResultsLandingPage.contains(searchLandingPageURL), "Search landing doesn't contain"+searchLandingPageURL);
 	 }
 
