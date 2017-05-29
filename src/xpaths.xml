@@ -1,0 +1,7 @@
+<Apps>
+    <YahooHomePage>
+        <HomePage name="logo">//div[@id='mega-uh']/div[1]/a</HomePage>
+        <HomePageSearchBar name="searchbar">//div[@id='uh-search']//table</HomePageSearchBar>
+    </YahooHomePage>
+</Apps>
+
