@@ -33,7 +33,7 @@ public class CommonLib {
             //create Document object using XPathList.xml file
             DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
             DocumentBuilder builder=factory.newDocumentBuilder();
-            Document doc=builder.parse(new File(".src/xpaths.xml ")); //TODO Add file name
+            Document doc=builder.parse(new File(".src/xpaths.xml"));
 
             //get app node list
             NodeList nodeList=doc.getElementsByTagName(app);
