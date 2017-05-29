@@ -13,19 +13,19 @@ public class YahooPageValidation {
 
 	@BeforeTest 
 	public void OpenBrowser() {
-	driver = new FirefoxDriver(); 
-	driver.manage().window().maximize(); 
+		driver = new FirefoxDriver();
+		driver.manage().window().maximize();
 	}
 
 
 	@AfterTest 
 	public void CloseBrowser() {
-	 //driver.quit(); 
+	  driver.quit();
 	} 
 
 	@Test 
 	public void verifyYahooPageTitle() {
-    	System.out.println("Inside verifyYahooPageTitle");
+		System.out.println("Inside verifyYahooPageTitle");
         driver.get("https://yahoo.com/");
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
         String title = driver.getTitle();
@@ -35,13 +35,16 @@ public class YahooPageValidation {
 
 	@Test
 	public void verifyYahooLogo() throws InterruptedException{
+		System.out.println("Inside verifyYahooLogo");
 		WebElement yahooLogo = driver.findElement(By.id(CommonLibrary.getPath("YahooHomePage","HomePage","logo"));
 		Assert.assertTrue(yahooLogo.isDisplayed(), "Yahoo Logo is not present");
 	}
 
 	 @Test
 	 public void verifySearchBar() throws InterruptedException{
-		 private static String  Query = "iPhone";
+		 System.out.println("Inside verifySearchBar");
+		 String  Query = "iPhone";
+		 System.out.println("Inside verifyYahooLogo");
 		 WebElement searchBox = driver.findElement(By.id(CommonLibrary.getPath("YahooHomePage", "HomePageSearchBar","searchbar"));
 		 Assert.assertTrue(searchBox.isDisplayed(), "Search bar is not display");
 		 searchBox.sendKeys(Query);
