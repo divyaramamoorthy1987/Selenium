@@ -20,17 +20,17 @@ public class YahooPageValidation {
 
 	@AfterTest 
 	public void CloseBrowser() {
-	  driver.quit();
+		driver.quit();
 	} 
 
 	@Test 
 	public void verifyYahooPageTitle() {
 		System.out.println("Inside verifyYahooPageTitle");
-        driver.get("https://yahoo.com/");
+		driver.get("https://yahoo.com/");
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
-        String title = driver.getTitle();
-        System.out.println("Title is : "+title);
-        Assert.assertTrue(title.contains("Yahoo"));
+		String title = driver.getTitle();
+		System.out.println("Title is : "+title);
+		Assert.assertTrue(title.contains("Yahoo"));
 	 }
 
 	@Test
